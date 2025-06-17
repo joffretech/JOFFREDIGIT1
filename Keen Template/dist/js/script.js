@@ -60,26 +60,26 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    updateCounter();
-
-    // Animation to start Counter 
+    // Animation to start Counter
     const counterElements = document.getElementById('counter-projek');
-    let counts = 0;
-    const targets = 2.5;
-    const durations = 2000; // Duration of the animation in milliseconds
-    const stepTimes = Math.abs(Math.floor(durations / (targets * 100)));
+    if (counterElements) {
+        let counts = 0;
+        const targets = 2.5;
+        const durations = 2000; // Duration of the animation in milliseconds
+        const stepTimes = Math.abs(Math.floor(durations / (targets * 100)));
 
-    function updateCounters() {
-        count += 0.01; // Increment by 0.01 for smooth animation
-        if (count >= target) {
-            counterElements.innerText = targets.toFixed(1);
-        } else {
-            counterElements.innerText = counts.toFixed(1);
-            setTimeout(updateCounters, stepTimes);
+        function updateCounters() {
+            counts += 0.01; // Increment by 0.01 for smooth animation
+            if (counts >= targets) {
+                counterElements.innerText = targets.toFixed(1);
+            } else {
+                counterElements.innerText = counts.toFixed(1);
+                setTimeout(updateCounters, stepTimes);
+            }
         }
-    }
 
-    updateCounters();
+        updateCounters();
+    }
 
     // Animation to start Counter 
     function animateCounter(element, endValue, duration) {
